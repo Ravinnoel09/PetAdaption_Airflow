@@ -1,0 +1,11 @@
+pet_id,name,breed,age,status,added_date
+1,Charlie,Pug,7,Adopted,2024-08-12
+2,Luna,Labrador,2,Available,2024-09-05
+3,Oscar,Beagle,4,Available,2024-10-19
+4,Buddy,Persian Cat,6,Adopted,2024-06-30
+5,Max,German Shepherd,3,Available,2024-08-27
+6,Lucy,Labrador,9,Adopted,2024-07-15
+7,Milo,Pug,1,Available,2024-10-01
+8,Daisy,Beagle,5,Adopted,2024-09-20
+9,Bella,German Shepherd,4,Available,2024-07-03
+10,Simba,Persian Cat,3,Adopted,2024-08-01

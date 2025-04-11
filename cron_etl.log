@@ -1,0 +1,29 @@
+2025-04-12 01:26:01,798 - INFO - Starting ETL process
+2025-04-12 01:26:01,799 - ERROR - Error extracting data: [Errno 2] No such file or directory: '/home/dharshan/web-projects/apacheairflow-ravin/pets_extended.csv'
+2025-04-12 01:26:01,799 - ERROR - ETL process failed: [Errno 2] No such file or directory: '/home/dharshan/web-projects/apacheairflow-ravin/pets_extended.csv'
+2025-04-12 01:28:02,377 - INFO - Starting ETL process
+2025-04-12 01:28:02,378 - ERROR - Error extracting data: [Errno 2] No such file or directory: '/home/dharshan/web-projects/apacheairflow-ravin/pets_extended.csv'
+2025-04-12 01:28:02,378 - ERROR - ETL process failed: [Errno 2] No such file or directory: '/home/dharshan/web-projects/apacheairflow-ravin/pets_extended.csv'
+2025-04-12 01:30:01,889 - INFO - Starting ETL process
+2025-04-12 01:30:01,889 - ERROR - Error extracting data: [Errno 2] No such file or directory: '/home/dharshan/web-projects/apacheairflow-ravin/pets_extended.csv'
+2025-04-12 01:30:01,890 - ERROR - ETL process failed: [Errno 2] No such file or directory: '/home/dharshan/web-projects/apacheairflow-ravin/pets_extended.csv'
+2025-04-12 01:32:02,483 - INFO - Starting ETL process
+2025-04-12 01:32:02,484 - ERROR - Error extracting data: [Errno 2] No such file or directory: '/home/dharshan/web-projects/apacheairflow-ravin/pets_extended.csv'
+2025-04-12 01:32:02,484 - ERROR - ETL process failed: [Errno 2] No such file or directory: '/home/dharshan/web-projects/apacheairflow-ravin/pets_extended.csv'
+2025-04-12 01:34:02,161 - INFO - Starting ETL process
+2025-04-12 01:34:02,162 - ERROR - Error extracting data: [Errno 2] No such file or directory: '/home/dharshan/web-projects/apacheairflow-ravin/pets_extended.csv'
+2025-04-12 01:34:02,162 - ERROR - ETL process failed: [Errno 2] No such file or directory: '/home/dharshan/web-projects/apacheairflow-ravin/pets_extended.csv'
+2025-04-12 01:36:01,848 - INFO - Starting ETL process
+2025-04-12 01:36:01,855 - INFO - Successfully extracted 39 records from /home/dharshan/web-projects/apacheairflow-ravin/pets.csv
+2025-04-12 01:36:01,859 - INFO - Data transformation completed
+2025-04-12 01:36:16,824 - ERROR - Database error: could not translate host name "dpg-cvs9k2mr433s73c1kcb0-a.oregon-postgres.render.com" to address: Temporary failure in name resolution
+
+2025-04-12 01:36:16,825 - ERROR - ETL process failed: could not translate host name "dpg-cvs9k2mr433s73c1kcb0-a.oregon-postgres.render.com" to address: Temporary failure in name resolution
+
+2025-04-12 01:38:02,404 - INFO - Starting ETL process
+2025-04-12 01:38:02,406 - INFO - Successfully extracted 39 records from /home/dharshan/web-projects/apacheairflow-ravin/pets.csv
+2025-04-12 01:38:02,409 - INFO - Data transformation completed
+2025-04-12 01:38:14,709 - ERROR - Database error: could not translate host name "dpg-cvs9k2mr433s73c1kcb0-a.oregon-postgres.render.com" to address: Temporary failure in name resolution
+
+2025-04-12 01:38:14,710 - ERROR - ETL process failed: could not translate host name "dpg-cvs9k2mr433s73c1kcb0-a.oregon-postgres.render.com" to address: Temporary failure in name resolution
+

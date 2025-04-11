@@ -107,7 +107,7 @@ def run_etl():
     try:
         # File path - get from environment or use default
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        csv_file = os.path.join(current_dir, "pets_extended.csv")
+        csv_file = os.path.join(current_dir, "pets.csv")
         
         # PostgreSQL connection string from environment or use default
         conn_string = os.environ.get(

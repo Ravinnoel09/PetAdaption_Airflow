@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption Dashboard - Perfect Cloud ETL</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <!-- Chart.js for visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Pet Adoption ETL Dashboard</h1>
+            <div class="user-info">
+                <span>User: {{ user }}</span>
+                <span>UTC Time: {{ current_time }}</span>
+                <span class="cloud-badge">Perfect Cloud</span>
+            </div>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#" class="active" data-tab="dashboard">Dashboard</a></li>
+                <li><a href="#" data-tab="pets">Pets</a></li>
+                <li><a href="#" data-tab="etl">ETL</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <!-- Dashboard Tab -->
+            <section id="dashboard" class="tab-content active">
+                <div class="system-info">
+                    <h2>Cloud ETL System Information</h2>
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <h3>Database</h3>
+                            <p>PostgreSQL on Render.com</p>
+                            <p class="status connected">Connected</p>
+                        </div>
+                        <div class="info-card">
+                            <h3>ETL Pipeline</h3>
+                            <p>Perfect Cloud</p>
+                            <p class="status active">Active</p>
+                        </div>
+                        <div class="info-card">
+                            <h3>Web Application</h3>
+                            <p>Flask on Render.com</p>
+                            <p class="status active">Active</p>
+                        </div>
+                        <div class="info-card">
+                            <h3>Last ETL Run</h3>
+                            <p id="lastEtlRun">Not run yet</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <h2>Pet Status</h2>
+                        <div class="chart-container">
+                            <canvas id="statusChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h2>Top Breeds</h2>
+                        <div class="chart-container">
+                            <canvas id="breedChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h2>Age Distribution</h2>
+                        <div class="chart-container">
+                            <canvas id="ageChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Pets Tab -->
+            <section id="pets" class="tab-content">
+                <div class="filter-bar">
+                    <input type="text" id="petSearch" placeholder="Search pets...">
+                    <select id="statusFilter">
+                        <option value="all">All Statuses</option>
+                        <option value="Available">Available</option>
+                        <option value="Adopted">Adopted</option>
+                    </select>
+                    <button id="refreshPets">Refresh</button>
+                </div>
+                
+                <div class="table-container">
+                    <table id="petsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Breed</th>
+                                <th>Age</th>
+                                <th>Status</th>
+                                <th>Added Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Pet data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- ETL Tab -->
+            <section id="etl" class="tab-content">
+                <div class="etl-info">
+                    <h2>ETL Pipeline on Perfect Cloud</h2>
+                    <p>This system extracts data from CSV files, transforms it to match the database schema, and loads it into your PostgreSQL database on Render.com.</p>
+                </div>
+                
+                <div class="card">
+                    <h2>Upload CSV File</h2>
+                    <form id="csvUploadForm">
+                        <div class="form-group">
+                            <label for="csvFile">Select CSV File:</label>
+                            <input type="file" id="csvFile" accept=".csv" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" id="previewBtn">Preview</button>
+                            <button type="submit" id="uploadBtn">Upload & Process</button>
+                        </div>
+                    </form>
+                    
+                    <div id="loadingIndicator" class="hidden">
+                        <div class="spinner"></div>
+                        <p>Processing on Perfect Cloud... Please wait</p>
+                    </div>
+                    
+                    <div id="messageBox" class="hidden"></div>
+                </div>
+                
+                <div class="card hidden" id="previewCard">
+                    <h2>CSV Preview</h2>
+                    <div class="table-container">
+                        <table id="previewTable">
+                            <thead>
+                                <!-- Preview headers will be loaded here -->
+                            </thead>
+                            <tbody>
+                                <!-- Preview data will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="etl-diagram">
+                    <h2>ETL Process Diagram</h2>
+                    <div class="diagram">
+                        <div class="diagram-box extract">
+                            <h3>Extract</h3>
+                            <p>Read data from CSV files</p>
+                        </div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-box transform">
+                            <h3>Transform</h3>
+                            <p>Clean and format data</p>
+                        </div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-box load">
+                            <h3>Load</h3>
+                            <p>Insert into PostgreSQL</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Pet Adoption ETL Dashboard - Running on Perfect Cloud - {{ current_time }}</p>
+        </footer>
+    </div>
+    
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

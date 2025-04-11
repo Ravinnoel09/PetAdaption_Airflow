@@ -2,7 +2,7 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-# Copy requirements and install dependencies
+# Copy req and install dependencies 
 COPY req.txt .
 RUN pip install --no-cache-dir -r req.txt
 

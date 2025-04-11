@@ -1,9 +1,7 @@
 import csv
 import os
-import psycopg2
 from datetime import datetime
 from db import get_connection
-import pandas as pd
 
 def extract_data_from_csv(csv_file_path):
     """Extract data from CSV file"""
@@ -35,15 +33,6 @@ def transform_pet_data(data):
             except ValueError:
                 row['age'] = None
         
-        # Format date if needed
-        if row.get('added_date'):
-            try:
-                # If date format needs conversion
-                date_obj = datetime.strptime(row['added_date'], '%Y-%m-%d')
-                row['added_date'] = date_obj.strftime('%Y-%m-%d')
-            except ValueError:
-                row['added_date'] = None
-        
         transformed_data.append(row)
     
     print(f"Transformed {len(transformed_data)} records")
@@ -67,29 +56,27 @@ def load_pets_to_db(data):
                 # Update existing pet
                 cur.execute("""
                     UPDATE Pet 
-                    SET name = %s, breed = %s, age = %s, status = %s, added_date = %s
+                    SET name = %s, breed = %s, age = %s, status = %s
                     WHERE pet_id = %s
                 """, (
                     pet['name'], 
                     pet['breed'], 
                     pet['age'], 
                     pet['status'], 
-                    pet['added_date'], 
                     pet['pet_id']
                 ))
                 records_updated += 1
             else:
                 # Insert new pet
                 cur.execute("""
-                    INSERT INTO Pet (pet_id, name, breed, age, status, added_date)
-                    VALUES (%s, %s, %s, %s, %s, %s)
+                    INSERT INTO Pet (pet_id, name, breed, age, status)
+                    VALUES (%s, %s, %s, %s, %s)
                 """, (
                     pet['pet_id'], 
                     pet['name'], 
                     pet['breed'], 
                     pet['age'], 
-                    pet['status'], 
-                    pet['added_date']
+                    pet['status']
                 ))
                 records_inserted += 1
         

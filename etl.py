@@ -7,8 +7,7 @@ import logging
 # Set up logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    filename='pet_etl.log'
+    format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
 def extract_from_csv(file_path):
@@ -106,11 +105,15 @@ def load_to_db(df, conn_string):
 def run_etl():
     """Run the full ETL process"""
     try:
-        # File path - update this to your CSV location
-        csv_file = "pets.csv"
+        # File path - get from environment or use default
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        csv_file = os.path.join(current_dir, "pets_extended.csv")
         
-        # PostgreSQL connection string
-        conn_string = "postgresql://ravin:smKJJp03QRMoJhVanbTZUOtUoQAiCnIM@dpg-cvs9k2mr433s73c1kcb0-a.oregon-postgres.render.com/pet_adoption_tujr"
+        # PostgreSQL connection string from environment or use default
+        conn_string = os.environ.get(
+            "DATABASE_URL", 
+            "postgresql://ravin:smKJJp03QRMoJhVanbTZUOtUoQAiCnIM@dpg-cvs9k2mr433s73c1kcb0-a.oregon-postgres.render.com/pet_adoption_tujr"
+        )
         
         # ETL process
         logging.info("Starting ETL process")

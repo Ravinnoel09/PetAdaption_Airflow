@@ -29,3 +29,12 @@ pet_id,name,breed,age,status,added_date
 28,Ruby,Pomeranian,2,Adopted,2024-10-15
 29,Tucker,Pitbull,5,Available,2024-07-11
 30,Nala,Scottish Fold,3,Adopted,2024-08-20
+5,Max,German Shepherd,3,Available,2024-08-27
+6,Lucy,Labrador,9,Adopted,2024-07-15
+7,Milo,Pug,1,Available,2024-10-01
+8,Daisy,Beagle,5,Adopted,2024-09-20
+9,Bella,German Shepherd,4,Available,2024-07-03
+10,Simba,Persian Cat,3,Adopted,2024-08-01
+11,Rocky,Bulldog,3,Available,2024-08-05
+12,Coco,Siamese Cat,5,Adopted,2024-07-22
+13,Teddy,Golden Retriever,2,Pending,2024-09-30

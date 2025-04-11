@@ -21,3 +21,18 @@
 2025-04-12 00:41:39,837 - INFO - Data transformation completed
 2025-04-12 00:41:55,012 - INFO - Successfully inserted/updated 30 records
 2025-04-12 00:41:55,013 - INFO - ETL process completed successfully
+2025-04-12 00:43:55,449 - INFO - Starting ETL process
+2025-04-12 00:43:55,451 - INFO - Successfully extracted 30 records from pets.csv
+2025-04-12 00:43:55,453 - INFO - Data transformation completed
+2025-04-12 00:44:12,591 - INFO - Successfully inserted/updated 30 records
+2025-04-12 00:44:12,591 - INFO - ETL process completed successfully
+2025-04-12 00:46:13,039 - INFO - Starting ETL process
+2025-04-12 00:46:13,041 - INFO - Successfully extracted 39 records from pets.csv
+2025-04-12 00:46:13,044 - INFO - Data transformation completed
+2025-04-12 00:46:29,080 - INFO - Successfully inserted/updated 39 records
+2025-04-12 00:46:29,082 - INFO - ETL process completed successfully
+2025-04-12 00:48:29,679 - INFO - Starting ETL process
+2025-04-12 00:48:29,685 - INFO - Successfully extracted 39 records from pets.csv
+2025-04-12 00:48:29,691 - INFO - Data transformation completed
+2025-04-12 00:48:46,678 - INFO - Successfully inserted/updated 39 records
+2025-04-12 00:48:46,685 - INFO - ETL process completed successfully

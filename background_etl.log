@@ -1,0 +1,5 @@
+2025-04-12 00:41:39,485 - INFO - Background ETL runner started at 2025-04-12 00:41:39.485003
+2025-04-12 00:41:39,485 - INFO - Will run ETL every 120 seconds
+2025-04-12 00:41:39,485 - INFO - Starting ETL process at 2025-04-12 00:41:39.485250
+2025-04-12 00:41:55,067 - INFO - ETL process completed successfully
+2025-04-12 00:41:55,067 - INFO - Waiting 120 seconds before next run...

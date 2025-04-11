@@ -1,127 +1,126 @@
-import csv
-import os
+import pandas as pd
+import psycopg2
 from datetime import datetime
-from db import get_connection
+import os
+import logging
 
-def extract_data_from_csv(csv_file_path):
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filename='pet_etl.log'
+)
+
+def extract_from_csv(file_path):
     """Extract data from CSV file"""
-    data = []
     try:
-        with open(csv_file_path, 'r') as file:
-            csv_reader = csv.DictReader(file)
-            for row in csv_reader:
-                data.append(row)
-        print(f"Extracted {len(data)} records from CSV")
-        return data
+        df = pd.read_csv(file_path)
+        logging.info(f"Successfully extracted {len(df)} records from {file_path}")
+        return df
     except Exception as e:
-        print(f"Error extracting data: {e}")
-        return []
+        logging.error(f"Error extracting data: {e}")
+        raise
 
-def transform_pet_data(data):
-    """Transform pet data to match database schema"""
-    transformed_data = []
-    for row in data:
-        # Convert empty strings to None
-        for key, value in row.items():
-            if value == '':
-                row[key] = None
-        
-        # Ensure age is an integer
-        if row.get('age'):
-            try:
-                row['age'] = int(row['age'])
-            except ValueError:
-                row['age'] = None
-        
-        transformed_data.append(row)
-    
-    print(f"Transformed {len(transformed_data)} records")
-    return transformed_data
-
-def load_pets_to_db(data):
-    """Load transformed pet data to database"""
-    conn = get_connection()
-    cur = conn.cursor()
-    
-    records_inserted = 0
-    records_updated = 0
-    
+def transform_data(df):
+    """Transform data (basic cleaning and formatting)"""
     try:
-        for pet in data:
-            # Check if pet already exists
-            cur.execute("SELECT pet_id FROM Pet WHERE pet_id = %s", (pet['pet_id'],))
-            existing_pet = cur.fetchone()
+        # Convert date strings to datetime objects
+        df['added_date'] = pd.to_datetime(df['added_date'])
+        
+        # Ensure all string columns are properly stripped
+        for col in ['name', 'breed', 'status']:
+            df[col] = df[col].str.strip()
             
-            if existing_pet:
-                # Update existing pet
-                cur.execute("""
-                    UPDATE Pet 
-                    SET name = %s, breed = %s, age = %s, status = %s
-                    WHERE pet_id = %s
+        # Convert age to integer
+        df['age'] = df['age'].astype(int)
+        
+        logging.info("Data transformation completed")
+        return df
+    except Exception as e:
+        logging.error(f"Error transforming data: {e}")
+        raise
+
+def load_to_db(df, conn_string):
+    """Load data to PostgreSQL database"""
+    try:
+        # Create connection
+        conn = psycopg2.connect(conn_string)
+        cursor = conn.cursor()
+        
+        # Create table if it doesn't exist
+        create_table_query = """
+        CREATE TABLE IF NOT EXISTS pets (
+            pet_id INTEGER PRIMARY KEY,
+            name VARCHAR(100),
+            breed VARCHAR(100),
+            age INTEGER,
+            status VARCHAR(50),
+            added_date DATE,
+            etl_timestamp TIMESTAMP
+        );
+        """
+        cursor.execute(create_table_query)
+        
+        # Insert data row by row (with error handling)
+        inserted = 0
+        for _, row in df.iterrows():
+            try:
+                cursor.execute("""
+                INSERT INTO pets (pet_id, name, breed, age, status, added_date, etl_timestamp)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                ON CONFLICT (pet_id) 
+                DO UPDATE SET 
+                    name = EXCLUDED.name,
+                    breed = EXCLUDED.breed,
+                    age = EXCLUDED.age,
+                    status = EXCLUDED.status,
+                    added_date = EXCLUDED.added_date,
+                    etl_timestamp = EXCLUDED.etl_timestamp
                 """, (
-                    pet['name'], 
-                    pet['breed'], 
-                    pet['age'], 
-                    pet['status'], 
-                    pet['pet_id']
+                    row['pet_id'],
+                    row['name'],
+                    row['breed'],
+                    row['age'],
+                    row['status'],
+                    row['added_date'],
+                    datetime.now()
                 ))
-                records_updated += 1
-            else:
-                # Insert new pet
-                cur.execute("""
-                    INSERT INTO Pet (pet_id, name, breed, age, status)
-                    VALUES (%s, %s, %s, %s, %s)
-                """, (
-                    pet['pet_id'], 
-                    pet['name'], 
-                    pet['breed'], 
-                    pet['age'], 
-                    pet['status']
-                ))
-                records_inserted += 1
+                inserted += 1
+            except Exception as e:
+                logging.error(f"Error inserting record {row['pet_id']}: {e}")
         
         conn.commit()
-        print(f"Successfully loaded data: {records_inserted} inserted, {records_updated} updated")
-        return True
+        logging.info(f"Successfully inserted/updated {inserted} records")
+        
     except Exception as e:
-        conn.rollback()
-        print(f"Error loading data: {e}")
-        return False
+        logging.error(f"Database error: {e}")
+        if 'conn' in locals():
+            conn.rollback()
+        raise
     finally:
-        cur.close()
-        conn.close()
+        if 'cursor' in locals():
+            cursor.close()
+        if 'conn' in locals():
+            conn.close()
 
-def run_etl_pipeline(csv_file_path):
-    """Run the complete ETL pipeline"""
-    print(f"Starting ETL pipeline for {csv_file_path}")
-    
-    # Extract
-    raw_data = extract_data_from_csv(csv_file_path)
-    if not raw_data:
-        print("ETL failed: No data extracted")
-        return False
-    
-    # Transform
-    transformed_data = transform_pet_data(raw_data)
-    if not transformed_data:
-        print("ETL failed: Transformation error")
-        return False
-    
-    # Load
-    success = load_pets_to_db(transformed_data)
-    if success:
-        print("ETL pipeline completed successfully")
-        return True
-    else:
-        print("ETL pipeline failed during load phase")
-        return False
+def run_etl():
+    """Run the full ETL process"""
+    try:
+        # File path - update this to your CSV location
+        csv_file = "pets.csv"
+        
+        # PostgreSQL connection string
+        conn_string = "postgresql://ravin:smKJJp03QRMoJhVanbTZUOtUoQAiCnIM@dpg-cvs9k2mr433s73c1kcb0-a.oregon-postgres.render.com/pet_adoption_tujr"
+        
+        # ETL process
+        logging.info("Starting ETL process")
+        df = extract_from_csv(csv_file)
+        transformed_df = transform_data(df)
+        load_to_db(transformed_df, conn_string)
+        logging.info("ETL process completed successfully")
+        
+    except Exception as e:
+        logging.error(f"ETL process failed: {e}")
 
 if __name__ == "__main__":
-    # Run directly if script is executed
-    import sys
-    if len(sys.argv) > 1:
-        file_path = sys.argv[1]
-    else:
-        file_path = "pets.csv"  # Default file name
-    
-    run_etl_pipeline(file_path)
+    run_etl()

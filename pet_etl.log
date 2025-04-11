@@ -1,0 +1,23 @@
+2025-04-11 23:17:04,964 - INFO - Starting ETL process
+2025-04-11 23:17:04,964 - ERROR - Error extracting data: [Errno 2] No such file or directory: 'pets_data.csv'
+2025-04-11 23:17:04,964 - ERROR - ETL process failed: [Errno 2] No such file or directory: 'pets_data.csv'
+2025-04-11 23:17:58,518 - INFO - Starting ETL process
+2025-04-11 23:17:58,531 - INFO - Successfully extracted 10 records from pets.csv
+2025-04-11 23:17:58,547 - INFO - Data transformation completed
+2025-04-11 23:18:05,737 - INFO - Successfully inserted/updated 10 records
+2025-04-11 23:18:05,739 - INFO - ETL process completed successfully
+2025-04-11 23:36:40,617 - INFO - Starting ETL process
+2025-04-11 23:36:40,624 - INFO - Successfully extracted 10 records from pets.csv
+2025-04-11 23:36:40,628 - INFO - Data transformation completed
+2025-04-11 23:36:48,112 - INFO - Successfully inserted/updated 10 records
+2025-04-11 23:36:48,113 - INFO - ETL process completed successfully
+2025-04-12 00:01:18,057 - INFO - Starting ETL process
+2025-04-12 00:01:18,086 - INFO - Successfully extracted 10 records from pets.csv
+2025-04-12 00:01:18,106 - INFO - Data transformation completed
+2025-04-12 00:01:26,000 - INFO - Successfully inserted/updated 10 records
+2025-04-12 00:01:26,029 - INFO - ETL process completed successfully
+2025-04-12 00:41:39,828 - INFO - Starting ETL process
+2025-04-12 00:41:39,833 - INFO - Successfully extracted 30 records from pets.csv
+2025-04-12 00:41:39,837 - INFO - Data transformation completed
+2025-04-12 00:41:55,012 - INFO - Successfully inserted/updated 30 records
+2025-04-12 00:41:55,013 - INFO - ETL process completed successfully

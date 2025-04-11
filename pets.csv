@@ -9,3 +9,23 @@ pet_id,name,breed,age,status,added_date
 8,Daisy,Beagle,5,Adopted,2024-09-20
 9,Bella,German Shepherd,4,Available,2024-07-03
 10,Simba,Persian Cat,3,Adopted,2024-08-01
+11,Rocky,Bulldog,3,Available,2024-08-05
+12,Coco,Siamese Cat,5,Adopted,2024-07-22
+13,Teddy,Golden Retriever,2,Pending,2024-09-30
+14,Rosie,Shih Tzu,7,Available,2024-08-15
+15,Leo,Maine Coon,4,Adopted,2024-10-05
+16,Zoe,Dachshund,6,Available,2024-09-12
+17,Cooper,Boxer,8,Adopted,2024-07-04
+18,Lily,Ragdoll Cat,1,Available,2024-10-11
+19,Murphy,Border Collie,3,Pending,2024-09-25
+20,Chloe,Yorkshire Terrier,9,Adopted,2024-06-18
+21,Duke,Husky,4,Available,2024-08-30
+22,Oliver,Bengal Cat,2,Adopted,2024-09-19
+23,Sadie,Australian Shepherd,5,Available,2024-10-03
+24,Winston,Great Dane,6,Pending,2024-07-28
+25,Willow,Sphynx Cat,3,Available,2024-08-09
+26,Bentley,Rottweiler,7,Adopted,2024-06-22
+27,Jasper,Abyssinian Cat,4,Available,2024-09-08
+28,Ruby,Pomeranian,2,Adopted,2024-10-15
+29,Tucker,Pitbull,5,Available,2024-07-11
+30,Nala,Scottish Fold,3,Adopted,2024-08-20

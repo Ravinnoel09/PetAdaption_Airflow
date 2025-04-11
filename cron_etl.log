@@ -27,3 +27,46 @@
 
 2025-04-12 01:38:14,710 - ERROR - ETL process failed: could not translate host name "dpg-cvs9k2mr433s73c1kcb0-a.oregon-postgres.render.com" to address: Temporary failure in name resolution
 
+2025-04-12 01:40:02,549 - INFO - Starting ETL process
+2025-04-12 01:40:02,557 - INFO - Successfully extracted 39 records from /home/dharshan/web-projects/apacheairflow-ravin/pets.csv
+2025-04-12 01:40:02,562 - INFO - Data transformation completed
+2025-04-12 01:40:19,338 - INFO - Successfully inserted/updated 39 records
+2025-04-12 01:40:19,341 - INFO - ETL process completed successfully
+2025-04-12 01:42:03,743 - INFO - Starting ETL process
+2025-04-12 01:42:03,817 - INFO - Successfully extracted 39 records from /home/dharshan/web-projects/apacheairflow-ravin/pets.csv
+2025-04-12 01:42:03,863 - INFO - Data transformation completed
+2025-04-12 01:42:22,428 - INFO - Successfully inserted/updated 39 records
+2025-04-12 01:42:22,471 - INFO - ETL process completed successfully
+2025-04-12 01:46:02,250 - INFO - Starting ETL process
+2025-04-12 01:46:02,254 - INFO - Successfully extracted 39 records from /home/dharshan/web-projects/apacheairflow-ravin/pets.csv
+2025-04-12 01:46:02,258 - INFO - Data transformation completed
+2025-04-12 01:46:23,240 - INFO - Successfully inserted/updated 39 records
+2025-04-12 01:46:23,240 - INFO - ETL process completed successfully
+2025-04-12 01:48:01,755 - INFO - Starting ETL process
+2025-04-12 01:48:01,758 - INFO - Successfully extracted 39 records from /home/dharshan/web-projects/apacheairflow-ravin/pets.csv
+2025-04-12 01:48:01,761 - INFO - Data transformation completed
+2025-04-12 01:48:19,744 - INFO - Successfully inserted/updated 39 records
+2025-04-12 01:48:19,745 - INFO - ETL process completed successfully
+2025-04-12 01:50:02,158 - INFO - Starting ETL process
+2025-04-12 01:50:02,160 - INFO - Successfully extracted 39 records from /home/dharshan/web-projects/apacheairflow-ravin/pets.csv
+2025-04-12 01:50:02,163 - INFO - Data transformation completed
+2025-04-12 01:50:20,145 - INFO - Successfully inserted/updated 39 records
+2025-04-12 01:50:20,148 - INFO - ETL process completed successfully
+2025-04-12 01:52:02,053 - INFO - Starting ETL process
+2025-04-12 01:52:02,058 - INFO - Successfully extracted 39 records from /home/dharshan/web-projects/apacheairflow-ravin/pets.csv
+2025-04-12 01:52:02,063 - INFO - Data transformation completed
+2025-04-12 01:52:19,781 - INFO - Successfully inserted/updated 39 records
+2025-04-12 01:52:19,782 - INFO - ETL process completed successfully
+2025-04-12 01:54:02,381 - INFO - Starting ETL process
+2025-04-12 01:54:02,385 - INFO - Successfully extracted 39 records from /home/dharshan/web-projects/apacheairflow-ravin/pets.csv
+2025-04-12 01:54:02,389 - INFO - Data transformation completed
+2025-04-12 01:54:22,051 - INFO - Successfully inserted/updated 39 records
+2025-04-12 01:54:22,054 - INFO - ETL process completed successfully
+2025-04-12 01:56:01,591 - INFO - Starting ETL process
+2025-04-12 01:56:01,593 - INFO - Successfully extracted 39 records from /home/dharshan/web-projects/apacheairflow-ravin/pets.csv
+2025-04-12 01:56:01,596 - INFO - Data transformation completed
+2025-04-12 01:56:22,262 - INFO - Successfully inserted/updated 39 records
+2025-04-12 01:56:22,263 - INFO - ETL process completed successfully
+2025-04-12 01:58:02,027 - INFO - Starting ETL process
+2025-04-12 01:58:02,033 - INFO - Successfully extracted 39 records from /home/dharshan/web-projects/apacheairflow-ravin/pets.csv
+2025-04-12 01:58:02,039 - INFO - Data transformation completed

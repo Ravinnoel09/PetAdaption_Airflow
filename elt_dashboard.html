@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet ETL Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Dashboard Styling */
+        :root {
+            --primary: #3b7080;
+            --secondary: #5ca0b6;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 500;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+        
+        .card h2 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .card-body {
+            height: 100%;
+        }
+        
+        .metric {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .grid-col-4 {
+            grid-column: span 4;
+        }
+        
+        .grid-col-6 {
+            grid-column: span 6;
+        }
+        
+        .grid-col-8 {
+            grid-column: span 8;
+        }
+        
+        .grid-col-12 {
+            grid-column: span 12;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25em 0.6em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+            margin-right: 0.5rem;
+        }
+        
+        .badge-success {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .badge-warning {
+            background-color: var(--warning);
+            color: var(--dark);
+        }
+        
+        .badge-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+        
+        .badge-info {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .log-entry {
+            padding: 0.75rem;
+            border-bottom: 1px solid #eee;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        
+        .log-info {
+            color: var(--primary);
+        }
+        
+        .log-error {
+            color: var(--danger);
+        }
+        
+        .log-warning {
+            color: var(--warning);
+        }
+        
+        .last-updated {
+            text-align: right;
+            font-size: 0.8rem;
+            color: var(--gray);
+            font-style: italic;
+            margin-top: 1rem;
+        }
+        
+        .refresh-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            float: right;
+            margin-bottom: 1rem;
+        }
+        
+        .refresh-btn:hover {
+            background: #2a5a68;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .grid-col-4, .grid-col-6, .grid-col-8 {
+                grid-column: span 6;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .grid-col-4, .grid-col-6, .grid-col-8, .grid-col-12 {
+                grid-column: span 12;
+            }
+            
+            .dashboard-grid {
+                gap: 1rem;
+            }
+            
+            .card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🐾 Pet Adoption ETL Dashboard</h1>
+    </header>
+    
+    <div class="container">
+        <button class="refresh-btn" onclick="loadDashboardData()">Refresh Dashboard</button>
+        
+        <!-- Summary section -->
+        <div class="dashboard-grid">
+            <div class="card grid-col-4">
+                <div class="card-header">
+                    <h2>Total Pets</h2>
+                </div>
+                <div class="card-body">
+                    <div class="metric" id="total-pets">--</div>
+                    <div class="metric-label">Pets in database</div>
+                </div>
+            </div>
+            
+            <div class="card grid-col-4">
+                <div class="card-header">
+                    <h2>Latest ETL Run</h2>
+                </div>
+                <div class="card-body">
+                    <div class="metric" id="last-etl-time">--</div>
+                    <div class="metric-label">Last ETL process</div>
+                </div>
+            </div>
+            
+            <div class="card grid-col-4">
+                <div class="card-header">
+                    <h2>ETL Status</h2>
+                </div>
+                <div class="card-body">
+                    <div class="metric" id="etl-status">--</div>
+                    <div class="metric-label">Current ETL process status</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ETL Logs section -->
+        <div class="dashboard-grid">
+            <div class="card grid-col-12">
+                <div class="card-header">
+                    <h2>ETL Logs</h2>
+                </div>
+                <div class="card-body">
+                    <div style="max-height: 400px; overflow-y: auto;">
+                        <div id="log-container">
+                            <div class="log-entry">Loading log data...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pets data section -->
+        <div class="dashboard-grid">
+            <div class="card grid-col-12">
+                <div class="card-header">
+                    <h2>Pet Data</h2>
+                </div>
+                <div class="card-body">
+                    <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Breed</th>
+                                    <th>Age</th>
+                                    <th>Status</th>
+                                    <th>Added Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pets-table-body">
+                                <tr>
+                                    <td colspan="6" style="text-align: center;">Loading pet data...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="last-updated">
+            Last updated: <span id="update-time">--</span>
+        </div>
+    </div>
+    
+    <script>
+        // Load the dashboard data
+        async function loadDashboardData() {
+            try {
+                // Use the current timestamp to prevent caching
+                const timestamp = new Date().getTime();
+                const response = await fetch(`dashboard_data.json?t=${timestamp}`);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load dashboard data');
+                }
+                
+                const data = await response.json();
+                
+                // Update the dashboard with the data
+                updateDashboard(data);
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+                // Load sample data as fallback
+                loadSampleData();
+            }
+        }
+        
+        // Update the dashboard with the data
+        function updateDashboard(data) {
+            // Update metrics
+            document.getElementById('total-pets').textContent = data.pet_data.length || 0;
+            
+            // Update last ETL time
+            if (data.metrics && data.metrics.last_successful_run) {
+                const timeStr = data.metrics.last_successful_run.split(' ')[1] || '--';
+                document.getElementById('last-etl-time').textContent = timeStr;
+            }
+            
+            // Update ETL status
+            if (data.metrics && data.metrics.status) {
+                const statusElement = document.getElementById('etl-status');
+                const status = data.metrics.status;
+                
+                let badgeClass = '';
+                switch (status) {
+                    case 'Success':
+                        badgeClass = 'badge-success';
+                        break;
+                    case 'Failed':
+                        badgeClass = 'badge-danger';
+                        break;
+                    default:
+                        badgeClass = 'badge-warning';
+                }
+                
+                statusElement.innerHTML = `<span class="badge ${badgeClass}">${status}</span>`;
+            }
+            
+            // Update log entries
+            const logContainer = document.getElementById('log-container');
+            logContainer.innerHTML = '';
+            
+            if (data.log_entries && data.log_entries.length > 0) {
+                data.log_entries.forEach(log => {
+                    const logEntry = document.createElement('div');
+                    logEntry.className = 'log-entry';
+                    
+                    if (log.includes(' - ERROR - ')) {
+                        logEntry.classList.add('log-error');
+                    } else if (log.includes(' - WARNING - ')) {
+                        logEntry.classList.add('log-warning');
+                    } else {
+                        logEntry.classList.add('log-info');
+                    }
+                    
+                    logEntry.textContent = log;
+                    logContainer.appendChild(logEntry);
+                });
+            } else {
+                logContainer.innerHTML = '<div class="log-entry">No log entries found</div>';
+            }
+            
+            // Update pet data table
+            const tableBody = document.getElementById('pets-table-body');
+            tableBody.innerHTML = '';
+            
+            if (data.pet_data && data.pet_data.length > 0) {
+                data.pet_data.forEach(pet => {
+                    const row = document.createElement('tr');
+                    
+                    // Format added_date for display
+                    let formattedDate = pet.added_date;
+                    if (formattedDate && formattedDate.includes('T')) {
+                        formattedDate = formattedDate.split('T')[0];
+                    }
+                    
+                    let statusClass = 'badge-info';
+                    if (pet.status === 'Adopted') {
+                        statusClass = 'badge-success';
+                    } else if (pet.status === 'Pending') {
+                        statusClass = 'badge-warning';
+                    }
+                    
+                    row.innerHTML = `
+                        <td>${pet.pet_id}</td>
+                        <td>${pet.name}</td>
+                        <td>${pet.breed}</td>
+                        <td>${pet.age}</td>
+                        <td><span class="badge ${statusClass}">${pet.status}</span></td>
+                        <td>${formattedDate}</td>
+                    `;
+                    
+                    tableBody.appendChild(row);
+                });
+            } else {
+                tableBody.innerHTML = '<tr><td colspan="6" style="text-align: center;">No pet data found</td></tr>';
+            }
+            
+            // Update last updated time
+            document.getElementById('update-time').textContent = data.updated_at || new Date().toLocaleString();
+        }
+        
+        // Load sample data as fallback
+        function loadSampleData() {
+            const sampleData = {
+                pet_data: [
+                    {pet_id: 1, name: "Charlie", breed: "Pug", age: 7, status: "Adopted", added_date: "2024-08-12"},
+                    {pet_id: 2, name: "Luna", breed: "Labrador", age: 2, status: "Available", added_date: "2024-09-05"},
+                    {pet_id: 3, name: "Oscar", breed: "Beagle", age: 4, status: "Available", added_date: "2024-10-19"}
+                ],
+                log_entries: [
+                    "2025-04-11 23:17:58,518 - INFO - Starting ETL process",
+                    "2025-04-11 23:17:58,531 - INFO - Successfully extracted 10 records from pets.csv",
+                    "2025-04-11 23:17:58,547 - INFO - Data transformation completed",
+                    "2025-04-11 23:18:05,737 - INFO - Successfully inserted/updated 10 records",
+                    "2025-04-11 23:18:05,739 - INFO - ETL process completed successfully"
+                ],
+                metrics: {
+                    last_successful_run: "2025-04-11 23:18:05",
+                    status: "Success",
+                    total_records: 10
+                },
+                updated_at: new Date().toLocaleString()
+            };
+            
+            updateDashboard(sampleData);
+        }
+        
+        // Load the dashboard data when the page loads
+        window.onload = loadDashboardData;
+    </script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+{
+  "pet_data": [
+    {
+      "pet_id": 1,
+      "name": "Charlie",
+      "breed": "Pug",
+      "age": 7,
+      "status": "Adopted",
+      "added_date": "2024-08-12",
+      "etl_timestamp": "2025-04-12T01:54:21.236072"
+    },
+    {
+      "pet_id": 2,
+      "name": "Luna",
+      "breed": "Labrador",
+      "age": 2,
+      "status": "Available",
+      "added_date": "2024-09-05",
+      "etl_timestamp": "2025-04-12T01:54:22.051917"
+    },
+    {
+      "pet_id": 3,
+      "name": "Oscar",
+      "breed": "Beagle",
+      "age": 4,
+      "status": "Available",
+      "added_date": "2024-10-19",
+      "etl_timestamp": "2025-04-12T01:54:22.443824"
+    },
+    {
+      "pet_id": 4,
+      "name": "Buddy",
+      "breed": "Persian Cat",
+      "age": 6,
+      "status": "Adopted",
+      "added_date": "2024-06-30",
+      "etl_timestamp": "2025-04-12T01:54:22.848130"
+    },
+    {
+      "pet_id": 5,
+      "name": "Max",
+      "breed": "German Shepherd",
+      "age": 3,
+      "status": "Available",
+      "added_date": "2024-08-27",
+      "etl_timestamp": "2025-04-12T01:54:33.718223"
+    },
+    {
+      "pet_id": 6,
+      "name": "Lucy",
+      "breed": "Labrador",
+      "age": 9,
+      "status": "Adopted",
+      "added_date": "2024-07-15",
+      "etl_timestamp": "2025-04-12T01:54:34.113800"
+    },
+    {
+      "pet_id": 7,
+      "name": "Milo",
+      "breed": "Pug",
+      "age": 1,
+      "status": "Available",
+      "added_date": "2024-10-01",
+      "etl_timestamp": "2025-04-12T01:54:34.534577"
+    },
+    {
+      "pet_id": 8,
+      "name": "Daisy",
+      "breed": "Beagle",
+      "age": 5,
+      "status": "Adopted",
+      "added_date": "2024-09-20",
+      "etl_timestamp": "2025-04-12T01:54:34.933038"
+    },
+    {
+      "pet_id": 9,
+      "name": "Bella",
+      "breed": "German Shepherd",
+      "age": 4,
+      "status": "Available",
+      "added_date": "2024-07-03",
+      "etl_timestamp": "2025-04-12T01:54:35.387550"
+    },
+    {
+      "pet_id": 10,
+      "name": "Simba",
+      "breed": "Persian Cat",
+      "age": 3,
+      "status": "Adopted",
+      "added_date": "2024-08-01",
+      "etl_timestamp": "2025-04-12T01:54:35.763962"
+    },
+    {
+      "pet_id": 11,
+      "name": "Rocky",
+      "breed": "Bulldog",
+      "age": 3,
+      "status": "Available",
+      "added_date": "2024-08-05",
+      "etl_timestamp": "2025-04-12T01:54:36.203837"
+    },
+    {
+      "pet_id": 12,
+      "name": "Coco",
+      "breed": "Siamese Cat",
+      "age": 5,
+      "status": "Adopted",
+      "added_date": "2024-07-22",
+      "etl_timestamp": "2025-04-12T01:54:36.577693"
+    },
+    {
+      "pet_id": 13,
+      "name": "Teddy",
+      "breed": "Golden Retriever",
+      "age": 2,
+      "status": "Pending",
+      "added_date": "2024-09-30",
+      "etl_timestamp": "2025-04-12T01:54:36.981064"
+    },
+    {
+      "pet_id": 14,
+      "name": "Rosie",
+      "breed": "Shih Tzu",
+      "age": 7,
+      "status": "Available",
+      "added_date": "2024-08-15",
+      "etl_timestamp": "2025-04-12T01:54:26.797127"
+    },
+    {
+      "pet_id": 15,
+      "name": "Leo",
+      "breed": "Maine Coon",
+      "age": 4,
+      "status": "Adopted",
+      "added_date": "2024-10-05",
+      "etl_timestamp": "2025-04-12T01:54:27.168868"
+    },
+    {
+      "pet_id": 16,
+      "name": "Zoe",
+      "breed": "Dachshund",
+      "age": 6,
+      "status": "Available",
+      "added_date": "2024-09-12",
+      "etl_timestamp": "2025-04-12T01:54:27.559480"
+    },
+    {
+      "pet_id": 17,
+      "name": "Cooper",
+      "breed": "Boxer",
+      "age": 8,
+      "status": "Adopted",
+      "added_date": "2024-07-04",
+      "etl_timestamp": "2025-04-12T01:54:27.992445"
+    },
+    {
+      "pet_id": 18,
+      "name": "Lily",
+      "breed": "Ragdoll Cat",
+      "age": 1,
+      "status": "Available",
+      "added_date": "2024-10-11",
+      "etl_timestamp": "2025-04-12T01:54:28.378883"
+    },
+    {
+      "pet_id": 19,
+      "name": "Murphy",
+      "breed": "Border Collie",
+      "age": 3,
+      "status": "Pending",
+      "added_date": "2024-09-25",
+      "etl_timestamp": "2025-04-12T01:54:28.788292"
+    },
+    {
+      "pet_id": 20,
+      "name": "Chloe",
+      "breed": "Yorkshire Terrier",
+      "age": 9,
+      "status": "Adopted",
+      "added_date": "2024-06-18",
+      "etl_timestamp": "2025-04-12T01:54:29.200223"
+    },
+    {
+      "pet_id": 21,
+      "name": "Duke",
+      "breed": "Husky",
+      "age": 4,
+      "status": "Available",
+      "added_date": "2024-08-30",
+      "etl_timestamp": "2025-04-12T01:54:29.607445"
+    },
+    {
+      "pet_id": 22,
+      "name": "Oliver",
+      "breed": "Bengal Cat",
+      "age": 2,
+      "status": "Adopted",
+      "added_date": "2024-09-19",
+      "etl_timestamp": "2025-04-12T01:54:30.024759"
+    },
+    {
+      "pet_id": 23,
+      "name": "Sadie",
+      "breed": "Australian Shepherd",
+      "age": 5,
+      "status": "Available",
+      "added_date": "2024-10-03",
+      "etl_timestamp": "2025-04-12T01:54:30.427004"
+    },
+    {
+      "pet_id": 24,
+      "name": "Winston",
+      "breed": "Great Dane",
+      "age": 6,
+      "status": "Pending",
+      "added_date": "2024-07-28",
+      "etl_timestamp": "2025-04-12T01:54:30.849708"
+    },
+    {
+      "pet_id": 25,
+      "name": "Willow",
+      "breed": "Sphynx Cat",
+      "age": 3,
+      "status": "Available",
+      "added_date": "2024-08-09",
+      "etl_timestamp": "2025-04-12T01:54:31.300904"
+    },
+    {
+      "pet_id": 26,
+      "name": "Bentley",
+      "breed": "Rottweiler",
+      "age": 7,
+      "status": "Adopted",
+      "added_date": "2024-06-22",
+      "etl_timestamp": "2025-04-12T01:54:31.676247"
+    },
+    {
+      "pet_id": 27,
+      "name": "Jasper",
+      "breed": "Abyssinian Cat",
+      "age": 4,
+      "status": "Available",
+      "added_date": "2024-09-08",
+      "etl_timestamp": "2025-04-12T01:54:32.126156"
+    },
+    {
+      "pet_id": 28,
+      "name": "Ruby",
+      "breed": "Pomeranian",
+      "age": 2,
+      "status": "Adopted",
+      "added_date": "2024-10-15",
+      "etl_timestamp": "2025-04-12T01:54:32.679964"
+    },
+    {
+      "pet_id": 29,
+      "name": "Tucker",
+      "breed": "Pitbull",
+      "age": 5,
+      "status": "Available",
+      "added_date": "2024-07-11",
+      "etl_timestamp": "2025-04-12T01:54:32.923649"
+    },
+    {
+      "pet_id": 30,
+      "name": "Nala",
+      "breed": "Scottish Fold",
+      "age": 3,
+      "status": "Adopted",
+      "added_date": "2024-08-20",
+      "etl_timestamp": "2025-04-12T01:54:33.294699"
+    }
+  ],
+  "log_entries": [
+    "2025-04-11 23:17:04,964 - INFO - Starting ETL process",
+    "2025-04-11 23:17:04,964 - ERROR - Error extracting data: [Errno 2] No such file or directory: 'pets_data.csv'",
+    "2025-04-11 23:17:04,964 - ERROR - ETL process failed: [Errno 2] No such file or directory: 'pets_data.csv'",
+    "2025-04-11 23:17:58,518 - INFO - Starting ETL process",
+    "2025-04-11 23:17:58,531 - INFO - Successfully extracted 10 records from pets.csv",
+    "2025-04-11 23:17:58,547 - INFO - Data transformation completed",
+    "2025-04-11 23:18:05,737 - INFO - Successfully inserted/updated 10 records",
+    "2025-04-11 23:18:05,739 - INFO - ETL process completed successfully",
+    "2025-04-11 23:36:40,617 - INFO - Starting ETL process",
+    "2025-04-11 23:36:40,624 - INFO - Successfully extracted 10 records from pets.csv",
+    "2025-04-11 23:36:40,628 - INFO - Data transformation completed",
+    "2025-04-11 23:36:48,112 - INFO - Successfully inserted/updated 10 records",
+    "2025-04-11 23:36:48,113 - INFO - ETL process completed successfully",
+    "2025-04-12 00:01:18,057 - INFO - Starting ETL process",
+    "2025-04-12 00:01:18,086 - INFO - Successfully extracted 10 records from pets.csv",
+    "2025-04-12 00:01:18,106 - INFO - Data transformation completed",
+    "2025-04-12 00:01:26,000 - INFO - Successfully inserted/updated 10 records",
+    "2025-04-12 00:01:26,029 - INFO - ETL process completed successfully",
+    "2025-04-12 00:41:39,828 - INFO - Starting ETL process",
+    "2025-04-12 00:41:39,833 - INFO - Successfully extracted 30 records from pets.csv",
+    "2025-04-12 00:41:39,837 - INFO - Data transformation completed",
+    "2025-04-12 00:41:55,012 - INFO - Successfully inserted/updated 30 records",
+    "2025-04-12 00:41:55,013 - INFO - ETL process completed successfully",
+    "2025-04-12 00:43:55,449 - INFO - Starting ETL process",
+    "2025-04-12 00:43:55,451 - INFO - Successfully extracted 30 records from pets.csv",
+    "2025-04-12 00:43:55,453 - INFO - Data transformation completed",
+    "2025-04-12 00:44:12,591 - INFO - Successfully inserted/updated 30 records",
+    "2025-04-12 00:44:12,591 - INFO - ETL process completed successfully",
+    "2025-04-12 00:46:13,039 - INFO - Starting ETL process",
+    "2025-04-12 00:46:13,041 - INFO - Successfully extracted 39 records from pets.csv",
+    "2025-04-12 00:46:13,044 - INFO - Data transformation completed",
+    "2025-04-12 00:46:29,080 - INFO - Successfully inserted/updated 39 records",
+    "2025-04-12 00:46:29,082 - INFO - ETL process completed successfully",
+    "2025-04-12 00:48:29,679 - INFO - Starting ETL process",
+    "2025-04-12 00:48:29,685 - INFO - Successfully extracted 39 records from pets.csv",
+    "2025-04-12 00:48:29,691 - INFO - Data transformation completed",
+    "2025-04-12 00:48:46,678 - INFO - Successfully inserted/updated 39 records",
+    "2025-04-12 00:48:46,685 - INFO - ETL process completed successfully"
+  ],
+  "metrics": {
+    "last_successful_run": "2025-04-12 00:48:46,685",
+    "status": "Success",
+    "total_records": 39
+  },
+  "updated_at": "2025-04-12 01:55:14"
+}

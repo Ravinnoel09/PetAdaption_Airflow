@@ -14,7 +14,8 @@ export AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=${AIRFLOW__DATABASE__SQL_ALCHEMY_CONN
 export AIRFLOW__CORE__DAGS_FOLDER=${AIRFLOW__CORE__DAGS_FOLDER:-$(pwd)/airflow_dags}
 
 echo "📦 Initializing Airflow DB..."
-airflow db init
+# Using db migrate instead of db init as recommended
+airflow db migrate
 
 echo "🔐 Creating Airflow user..."
 airflow users create \
@@ -24,6 +25,9 @@ airflow users create \
     --role Admin \
     --email admin@example.com \
     --password admin || true
+
+echo "🔧 Creating default connections..."
+airflow connections create-default-connections || true
 
 echo "🚀 Starting Airflow scheduler in standalone mode..."
 exec airflow scheduler

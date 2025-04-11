@@ -15,7 +15,7 @@ from etl.transform_data import clean_pet_data
 from etl.load_to_db import load_to_postgres
 
 # Sample CSV URL - replace with your actual data source
-SAMPLE_PET_DATA_URL = "https://raw.githubusercontent.com/datablist/sample-csv-files/main/files/organizations/simple.csv"
+SAMPLE_PET_DATA_URL = "https://github.com/Ravinnoel09/PetAdaption_Airflow/blob/main/sample_data/pets_legacy.csv"
 
 # Define default arguments
 default_args = {
